@@ -69,7 +69,7 @@ done
 
 for partition in $partitions; do
     if [[ -f "UnpackedROMs/$partition.img" ]]; then
-        echo "File found: UnpackedROMs/$partition.img"
+        echo "Unpacking file: UnpackedROMs/$partition.img"
         mkdir -p "UnpackedROMs/temp_mount"
         mkdir -p "UnpackedROMs/$partition"
         fs_type=$(blkid -o value -s TYPE "UnpackedROMs/$partition.img" 2>/dev/null)
@@ -78,7 +78,7 @@ for partition in $partitions; do
         else
             sudo mount "UnpackedROMs/$partition.img" "UnpackedROMs/temp_mount"
         fi
-        cp -r "UnpackedROMs/temp_mount/". "UnpackedROMs/$partition/"
+        cp -r "UnpackedROMs/temp_mount/." "UnpackedROMs/$partition/"
         sudo umount -R "UnpackedROMs/temp_mount"
     fi
 done
@@ -93,7 +93,7 @@ for partition in $partitions; do
             continue
         fi
         if [ -d "UnpackedROMs/$partition" ]; then
-            echo "Moving $partition into root..."
+            echo "Moving $partition into root"
             mv "UnpackedROMs/$partition" "$source_dir/.."
         fi
     fi

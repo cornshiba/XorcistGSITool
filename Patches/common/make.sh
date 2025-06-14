@@ -1,7 +1,8 @@
 #!/bin/bash
 
+BASE_DIR=$1
 SCRIPT_DIR=$(dirname "$0")
-BASE_DIR="$1"
+TEMP_DIR="$SCRIPT_DIR/../../Temp"
 
 if [ -d "$BASE_DIR/product" ] && [ ! -L "$BASE_DIR/product" ]; then
     product="$BASE_DIR/product"
@@ -32,6 +33,8 @@ sed -i "/media.settings.xml/d" $BASE_DIR/system/build.prop
 sed -i "/ro.arch/d" $BASE_DIR/system/build.prop
 sed -i "/persist.sys.usb.config/d" $BASE_DIR/system/build.prop
 sed -i "/ro.actionable_compatible_property.enabled/d" $BASE_DIR/system/build.prop
+sed -i "/ro.setupwizard.mode/d" $BASE_DIR/system/build.prop
+sed -i "/ro.setupwizard.mode/d" $product/etc/build.prop
 sed -i "/ro.product.ab_ota_partitions/d" $product/etc/build.prop
 
 cat $SCRIPT_DIR/system_build.prop >> $BASE_DIR/system/build.prop
@@ -45,14 +48,16 @@ rm -rf $BASE_DIR/system/etc/permissions/qti_permissions.xml
 rm -rf $BASE_DIR/system/etc/permissions/com.qti.dpmframework.xml
 rm -rf $system_ext/etc/permissions/qti_permissions.xml
 rm -rf $system_ext/etc/permissions/com.qti.dpmframework.xml
+rm -rf $BASE_DIR/system/priv-app/com.qualcomm.location
+if [ -f "$BASE_DIR/system/lib64/libbluetooth_qti.so" ] || [ -f "$system_ext/lib64/libbluetooth_qti.so" ]; then
+    echo "ro.bluetooth.library_name=libbluetooth_qti.so" >> "$BASE_DIR/system/build.prop"
+fi
 
 rm -rf $BASE_DIR/system/priv-app/DiracAudioControlService
 rm -rf $BASE_DIR/system/app/DiracManager
 
-rm -rf $BASE_DIR/system/priv-app/com.qualcomm.location
-
-$SCRIPT_DIR/../../Tools/sepolicy/sepolicy_prop_remover.sh $BASE_DIR/system/etc/selinux/plat_property_contexts "device/qcom/sepolicy" > $BASE_DIR/system/../../plat_property_contexts
-mv $BASE_DIR/system/../../plat_property_contexts $BASE_DIR/system/etc/selinux/plat_property_contexts
+$SCRIPT_DIR/../../Tools/sepolicy/sepolicy_prop_remover.sh $BASE_DIR/system/etc/selinux/plat_property_contexts "device/qcom/sepolicy" > $TEMP_DIR/plat_property_contexts
+mv $TEMP_DIR/plat_property_contexts $BASE_DIR/system/etc/selinux/plat_property_contexts
 sed -i "/typetransition location_app/d" $BASE_DIR/system/etc/selinux/plat_sepolicy.cil
 
 sed -i "/reboot_on_failure/d" $BASE_DIR/system/etc/init/hw/init.rc
@@ -94,9 +99,8 @@ rm -rf $BASE_DIR/system/etc/init/update_verifier.rc
 rm -rf $BASE_DIR/system/etc/init/cppreopts.rc
 rm -rf $BASE_DIR/system/etc/init/otapreopt.rc
 
+rm -rf $BASE_DIR/system/merge_config_*
 rm -rf $system_ext/apex/com.android.vndk.v*
-mv $system_ext/apex/* $BASE_DIR/system/apex
-rm -rf $system_ext/apex
 
 find "$BASE_DIR" -type d \( -name "app" -o -name "priv-app" \) | while read -r dir; do
     find "$dir" -type d -name "oat" -exec rm -rf {} + 2>/dev/null
@@ -104,3 +108,4 @@ find "$BASE_DIR" -type d \( -name "app" -o -name "priv-app" \) | while read -r d
 done
 
 find "$BASE_DIR" -type f -name "fstab.*" -exec rm -f {} + 2>/dev/null
+find "$BASE_DIR" -type f -name "verity_key" -exec rm -f {} + 2>/dev/null

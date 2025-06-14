@@ -1,8 +1,8 @@
 #!/bin/bash
 
 INPUT_DIR=$1
-BASE_DIR="temp"
 ROM_TYPE=$2
+BASE_DIR="Temp/system"
 
 usage() {
   echo "Usage: $0 [base_directory] [rom_type]"
@@ -41,19 +41,19 @@ if [ -z "$2" ]; then
 fi
 
 if [ ! -d "$INPUT_DIR" ]; then
-  echo "Error: Base directory '$INPUT_DIR' does not exist."
+  echo "Error: Directory $INPUT_DIR does not exist"
   exit 1
 fi
 
 rm -rf "$BASE_DIR"
 mkdir -p "$BASE_DIR"
-echo "Copy to temp directory"
+echo "Copying to temp directory"
 cp -r "$INPUT_DIR/." "$BASE_DIR/"
 
 SDK_VERSION=$(grep -m1 "ro.build.version.sdk" "$BASE_DIR/system/build.prop" | cut -d '=' -f2 | tr -dc '0-9')
 
 if [ -z "$SDK_VERSION" ] || ! [[ "$SDK_VERSION" =~ ^[0-9]+$ ]]; then
-  echo "Error: Unable to determine SDK version from '$BASE_DIR/system/build.prop'."
+  echo "Error: Unable to read SDK version from '$BASE_DIR/system/build.prop'."
   exit 1
 fi
 
@@ -79,15 +79,15 @@ case "$SDK_VERSION" in
     ;;
 esac
 
-echo "Android Version: $android_version (SDK $SDK_VERSION) detected"
+echo "Android Version: $android_version (SDK $SDK_VERSION)"
 
 if [ ! -d "Patches/$android_version" ]; then
-  echo "Error: Android version $android_version is not supported"
+  echo "Error: Android version $android_version unsupported"
   exit 1
 fi
 
 if [ ! -d "ROMsPatches/$android_version/$ROM_TYPE" ]; then
-  echo "Error: ROM directory '$ROM_TYPE' for Android '$android_version' does not exist. Look like unsupported"
+  echo "Error: ROM $ROM_TYPE for Android $android_version unsupported"
   supported_roms
   exit 1
 fi
@@ -108,4 +108,4 @@ current_date=$(date +"%Y-%m-%d")
 echo "Create $ROM_TYPE-AB-$android_version-$current_date.img"
 rm -rf "Output"
 mkdir -p "Output"
-$(pwd)/Tools/mkimage/mkimage.sh "$BASE_DIR" "Output/$ROM_TYPE-AB-$android_version-$current_date-FoxetGSI.img"
+Tools/mkimage/mkimage.sh "$BASE_DIR" "Output/$ROM_TYPE-AB-$android_version-$current_date-FoxetGSI.img"
