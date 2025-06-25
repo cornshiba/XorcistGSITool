@@ -9,7 +9,7 @@ if [[ -d "Tools/Firmware_extractor" ]]; then
     git -C "Tools"/Firmware_extractor reset --hard origin/master
 else
     echo "Cloning Firmware_extractor..."
-    git clone -q --recurse-submodules https://github.com/AndroidDumps/Firmware_extractor.git  "Tools"/Firmware_extractor
+    git clone -q --recurse-submodules https://github.com/FoxetGSI/Firmware_extractor.git "Tools"/Firmware_extractor
 fi
 
 usage() {
@@ -20,7 +20,7 @@ usage() {
   echo "  rom_type  - Type of rom"
   echo ""
   echo "Example:"
-  echo "  sudo bash $0 https://dl.google.com/dl/android/aosp/redfin-tq3a.230901.001.c2-factory-ca20bd02.zip  Pixel"
+  echo "  sudo bash $0 https://dl.google.com/dl/android/aosp/redfin-tq3a.230901.001.c2-factory-ca20bd02.zip Pixel"
   echo ""
 }
 
@@ -60,12 +60,6 @@ else
     wget -P "DownloadedROMs/" "$ROM_LINK"
     Tools/Firmware_extractor/extractor.sh "DownloadedROMs/"* "UnpackedROMs/"
 fi
-
-for partition in $partitions; do
-    if [[ -f "UnpackedROMs/$partition_a.img" ]]; then
-        mv "UnpackedROMs/$partition_a.img" "UnpackedROMs/$partition.img"
-    fi
-done
 
 for partition in $partitions; do
     if [[ -f "UnpackedROMs/$partition.img" ]]; then
