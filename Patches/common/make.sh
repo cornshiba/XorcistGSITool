@@ -46,11 +46,16 @@ rm -rf $system_ext/lib64/libdolphin.so
 
 rm -rf $BASE_DIR/system/etc/permissions/qti_permissions.xml
 rm -rf $BASE_DIR/system/etc/permissions/com.qti.dpmframework.xml
+rm -rf $BASE_DIR/system/priv-app/com.qualcomm.location
 rm -rf $system_ext/etc/permissions/qti_permissions.xml
 rm -rf $system_ext/etc/permissions/com.qti.dpmframework.xml
-rm -rf $BASE_DIR/system/priv-app/com.qualcomm.location
-if [ -f "$BASE_DIR/system/lib64/libbluetooth_qti.so" ] || [ -f "$system_ext/lib64/libbluetooth_qti.so" ]; then
+rm -rf $system_ext/priv-app/com.qualcomm.location
+
+if [ -f "$BASE_DIR/system/lib64/libbluetooth_qti.so" ]; then
     echo "ro.bluetooth.library_name=libbluetooth_qti.so" >> "$BASE_DIR/system/build.prop"
+fi
+if [ -f "$system_ext/lib64/libbluetooth_qti.so" ]; then
+    echo "ro.bluetooth.library_name=libbluetooth_qti.so" >> "$system_ext/etc/build.prop"
 fi
 
 rm -rf $BASE_DIR/system/priv-app/DiracAudioControlService
