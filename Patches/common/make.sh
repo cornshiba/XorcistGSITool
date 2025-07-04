@@ -44,12 +44,15 @@ cat $SCRIPT_DIR/file_contexts >> $BASE_DIR/system/etc/selinux/plat_file_contexts
 rm -rf $BASE_DIR/system/lib64/libdolphin.so
 rm -rf $system_ext/lib64/libdolphin.so
 
-rm -rf $BASE_DIR/system/etc/permissions/qti_permissions.xml
-rm -rf $BASE_DIR/system/etc/permissions/com.qti.dpmframework.xml
-rm -rf $BASE_DIR/system/priv-app/com.qualcomm.location
 rm -rf $system_ext/etc/permissions/qti_permissions.xml
 rm -rf $system_ext/etc/permissions/com.qti.dpmframework.xml
+rm -rf $system_ext/app/QCC
+rm -rf $system_ext/app/QColor
+rm -rf $system_ext/app/QesdkSysService
+rm -rf $system_ext/priv-app/com.qualcomm.qti.services.systemhelper
 rm -rf $system_ext/priv-app/com.qualcomm.location
+rm -rf $system_ext/priv-app/qcrilmsgtunnel
+rm -rf $system_ext/priv-app/QtiWifiService
 
 if [ -f "$BASE_DIR/system/lib64/libbluetooth_qti.so" ]; then
     echo "ro.bluetooth.library_name=libbluetooth_qti.so" >> "$BASE_DIR/system/build.prop"
