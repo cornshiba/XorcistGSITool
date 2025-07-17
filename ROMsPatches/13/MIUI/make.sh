@@ -39,6 +39,7 @@ rm -rf $product/app/MIpay*
 rm -rf $product/app/MSA
 rm -rf $product/app/OtaProvision
 rm -rf $product/app/PaymentService
+rm -rf $product/app/Joyose
 rm -rf $product/app/Updater
 rm -rf $product/app/UPTsmService
 rm -rf $product/app/VoiceAssistAndroidT
@@ -81,6 +82,7 @@ rm -rf $product/priv-app/MIShare
 rm -rf $product/priv-app/MIUIMusicT
 rm -rf $product/priv-app/MIUIPersonalAssistantT
 rm -rf $product/priv-app/MirrorSmartHubPrivate
+rm -rf $product/pangu/system/app/Joyose
 rm -rf $system_ext/app/MiuiDaemon
 rm -rf $system_ext/priv-app/FindDevice
 

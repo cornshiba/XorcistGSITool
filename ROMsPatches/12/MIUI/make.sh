@@ -40,6 +40,7 @@ rm -rf $BASE_DIR/system/app/VoiceTrigger
 rm -rf $BASE_DIR/system/app/MIUIWallper*
 rm -rf $BASE_DIR/system/app/MiuiBugReport
 rm -rf $BASE_DIR/system/app/PaymentService
+rm -rf $BASE_DIR/system/app/Joyose
 rm -rf $BASE_DIR/system/app/MIUIContentExtension
 rm -rf $BASE_DIR/system/data-app/MIUIWallper*
 rm -rf $BASE_DIR/system/data-app/Email
@@ -68,8 +69,6 @@ rm -rf $BASE_DIR/system/data-app/MIUIMusic*
 rm -rf $BASE_DIR/system/data-app/MIUIVideo*
 rm -rf $BASE_DIR/system/data-app/MIpay
 rm -rf $BASE_DIR/system/data-app/MiuiHealth
-rm -rf $product/data-app/BaiduIME
-rm -rf $product/data-app/com.iflytek.inputmethod.miui
 rm -rf $BASE_DIR/system/priv-app/FindDevice
 rm -rf $BASE_DIR/system/priv-app/MIService
 rm -rf $BASE_DIR/system/priv-app/MIShare
@@ -85,6 +84,8 @@ rm -rf $BASE_DIR/system/priv-app/MiGameCenterSDKService
 rm -rf $BASE_DIR/system/priv-app/MiuiExtraPhoto
 rm -rf $BASE_DIR/system/priv-app/MiExtraPhoto
 rm -rf $product/app/mi_aiasst_service
+rm -rf $product/data-app/BaiduIME
+rm -rf $product/data-app/com.iflytek.inputmethod.miui
 
 # Switch to AOSP SetupWizard
 rm -rf $BASE_DIR/system/priv-app/Provision

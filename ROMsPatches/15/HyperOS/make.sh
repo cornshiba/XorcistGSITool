@@ -35,6 +35,7 @@ rm -rf $product/app/MiBugReport*
 rm -rf $product/app/MiGameService*
 rm -rf $product/app/MiLink*
 rm -rf $product/app/PaymentService
+rm -rf $product/app/Joyose
 rm -rf $product/app/UPTsmService
 rm -rf $product/app/Updater
 rm -rf $product/app/VoiceAssist*
@@ -79,7 +80,9 @@ rm -rf $product/priv-app/MIUIQuickSearchBox
 rm -rf $product/priv-app/MIUIVideo
 rm -rf $product/priv-app/MIUIYellowPage
 rm -rf $product/priv-app/MiuiExtraPhoto
+rm -rf $product/pangu/system/app/Joyose
 rm -rf $system_ext/app/MiuiDaemon
+rm -rf $system_ext/priv-app/FindDevice
 
 # Switch to AOSP SetupWizard
 rm -rf $system_ext/priv-app/Provision
