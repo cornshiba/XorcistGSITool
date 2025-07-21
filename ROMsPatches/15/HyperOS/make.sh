@@ -100,7 +100,7 @@ rsync -ra $SCRIPT_DIR/OpenCamera $product/priv-app/
 rsync -ra $SCRIPT_DIR/bin/ $BASE_DIR/system/bin/
 
 # Apply build.prop fixes
-cat $SCRIPT_DIR/build.prop $BASE_DIR/system/build.prop
+cat $SCRIPT_DIR/build.prop >> $BASE_DIR/system/build.prop
 
 # Remove mi_ext partition
 if [ -d "$BASE_DIR/mi_ext/" ]; then
