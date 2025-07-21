@@ -98,11 +98,8 @@ rsync -ra $SCRIPT_DIR/OpenCamera $product/priv-app/
 # Switch to AOSP init
 rsync -ra $SCRIPT_DIR/bin/ $BASE_DIR/system/bin/
 
-# Lag fix
-echo "ro.surface_flinger.use_content_detection_for_refresh_rate=true" >> $BASE_DIR/system/build.prop
-echo "ro.surface_flinger.set_idle_timer_ms=2147483647" >> $BASE_DIR/system/build.prop
-echo "ro.surface_flinger.set_touch_timer_ms=2147483647" >> $BASE_DIR/system/build.prop
-echo "ro.surface_flinger.set_display_power_timer_ms=2147483647" >> $BASE_DIR/system/build.prop
+# Apply build.prop fixes
+cat $SCRIPT_DIR/build.prop $BASE_DIR/system/build.prop
 
 # Remove mi_ext partition
 if [ -d "$BASE_DIR/mi_ext/" ]; then
