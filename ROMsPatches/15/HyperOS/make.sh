@@ -65,8 +65,9 @@ rm -rf $product/data-app/MIUIVirtualSim
 rm -rf $product/data-app/MIUIMusic*
 rm -rf $product/data-app/MIUIVideo
 rm -rf $product/data-app/MIpay
-rm -rf $product/data-app/MiMediaEditor
+rm -rf $product/data-app/M*MediaEditor
 rm -rf $product/data-app/MiRadio
+rm -rf $product/data-app/MIService
 rm -rf $product/priv-app/MIService
 rm -rf $product/priv-app/MIShare
 rm -rf $product/priv-app/MIUIAICR
@@ -86,7 +87,7 @@ rm -rf $system_ext/priv-app/FindDevice
 
 # Switch to AOSP SetupWizard
 rm -rf $system_ext/priv-app/Provision
-rsync -ra $SCRIPT_DIR/SetupWizard $BASE_DIR/system/priv-app/
+rsync -ra $SCRIPT_DIR/SetupWizard $system_ext/priv-app/
 
 # Remove init.recovery.hardware
 rm -rf $BASE_DIR/init.recovery.hardware.rc
