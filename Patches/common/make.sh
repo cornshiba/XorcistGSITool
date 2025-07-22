@@ -53,6 +53,7 @@ rm -rf $system_ext/priv-app/com.qualcomm.qti.services.systemhelper
 rm -rf $system_ext/priv-app/com.qualcomm.location
 rm -rf $system_ext/priv-app/qcrilmsgtunnel
 rm -rf $system_ext/priv-app/QtiWifiService
+rm -rf $system_ext/priv-app/dpmserviceapp
 
 if [ -f "$BASE_DIR/system/lib64/libbluetooth_qti.so" ]; then
     echo "ro.bluetooth.library_name=libbluetooth_qti.so" >> "$BASE_DIR/system/build.prop"
