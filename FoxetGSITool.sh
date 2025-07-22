@@ -81,6 +81,11 @@ Patches/common/make.sh "$BASE_DIR"
 ROMsPatches/$android_version/$ROM_TYPE/make.sh "$BASE_DIR"
 tar -xf "Patches/apex/$android_version.tar.xz" -C "$BASE_DIR/system/apex"
 
+if [ -n "$(ls -A "$BASE_DIR/vendor" 2>/dev/null)" ]; then
+  Tools/addvo/addvo.sh "$BASE_DIR"
+  rm -rf "$BASE_DIR/vendor/"*
+fi
+
 current_date=$(date +"%Y-%m-%d")
 
 echo "Create $ROM_TYPE-AB-$android_version-$current_date.img"
