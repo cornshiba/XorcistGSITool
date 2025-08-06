@@ -42,7 +42,6 @@ rm -rf $product/app/Chrome*
 rm -rf $product/app/DevicePolicyPrebuilt
 rm -rf $product/app/DiagnosticsToolPrebuilt
 rm -rf $product/app/Drive
-rm -rf $product/app/GoogleCamera
 rm -rf $product/app/Maps
 rm -rf $product/app/MobileFeliCaClient
 rm -rf $product/app/MobileFeliCaMenuMainApp
@@ -70,7 +69,6 @@ rm -rf $product/priv-app/DreamlinerPrebuilt*
 rm -rf $product/priv-app/DreamlinerUpdater
 rm -rf $product/priv-app/EuiccGoogle
 rm -rf $product/priv-app/EuiccSupportPixel
-rm -rf $product/priv-app/GoogleCamera
 rm -rf $product/priv-app/GoogleRestorePrebuilt*
 rm -rf $product/priv-app/GoogleTTS
 rm -rf $product/priv-app/HelpRtcPrebuilt
@@ -103,6 +101,11 @@ rm -rf $product/priv-app/HotwordEnrollment*
 rm -rf $system_ext/framework/com.android.hotwordenrollment*
 rm -rf $system_ext/framework/oat/arm/com.android.hotwordenrollment*
 rm -rf $system_ext/framework/oat/arm64/com.android.hotwordenrollment*
+
+# Switch to OpenCamera
+rm -rf $product/app/GoogleCamera
+rm -rf $product/priv-app/GoogleCamera
+rsync -ra $SCRIPT_DIR/OpenCamera $product/priv-app/
 
 # Switch to AOSP init
 rsync -ra $SCRIPT_DIR/bin/ $BASE_DIR/system/bin/
