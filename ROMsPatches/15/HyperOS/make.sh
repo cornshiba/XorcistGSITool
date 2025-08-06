@@ -99,6 +99,9 @@ rsync -ra $SCRIPT_DIR/OpenCamera $product/priv-app/
 # Switch to AOSP init
 rsync -ra $SCRIPT_DIR/bin/ $BASE_DIR/system/bin/
 
+# Siwtch to AOSP libfsmgr
+rsync -ra $SCRIPT_DIR/lib64/ $BASE_DIR/system/lib64/
+
 # Apply build.prop fixes
 cat $SCRIPT_DIR/build.prop >> $BASE_DIR/system/build.prop
 
