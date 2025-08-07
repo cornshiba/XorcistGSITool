@@ -23,6 +23,7 @@ fi
 
 rm -rf $product/app/AiasstVision
 rm -rf $product/app/AnalyticsCore
+rm -rf $product/app/MIpay
 rm -rf $product/app/MINextpay
 rm -rf $product/app/MIS
 rm -rf $product/app/MITSMClient
