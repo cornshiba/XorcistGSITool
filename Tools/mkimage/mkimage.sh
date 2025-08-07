@@ -77,6 +77,7 @@ if [[ -f "$TEMP_DIR/file_contexts" ]]; then
     echo "/special_preload        u:object_r:rootfs:s0" >> "$TEMP_DIR/file_contexts"
     echo "/blackbox               u:object_r:rootfs:s0" >> "$TEMP_DIR/file_contexts"
     echo "/elabel                 u:object_r:rootfs:s0" >> "$TEMP_DIR/file_contexts"
+    echo "/logbuf                 u:object_r:rootfs:s0" >> "$TEMP_DIR/file_contexts"
     file_contexts="$TEMP_DIR/file_contexts"
 fi
 
