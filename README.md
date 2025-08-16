@@ -1,5 +1,5 @@
 ## Released GSIs
-Telegram channel: https://t.me/FoxetGSI
+Telegram channel: https://t.me/XorcistGSIS
 
 ## How to use
 
