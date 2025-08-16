@@ -51,3 +51,8 @@ rsync -ra $SCRIPT_DIR/bin/ $BASE_DIR/system/bin/
 
 # Siwtch to AOSP libfsmgr
 rsync -ra $SCRIPT_DIR/lib64/ $BASE_DIR/system/lib64/
+
+# Remove beta features
+sed -i "s/ro.vendor.asus.logupload=1/ro.vendor.asus.logupload=0/g" $BASE_DIR/system/build.prop
+sed -i "s/ro.vendor.asus.beta=1/ro.vendor.asus.beta=0/g" $BASE_DIR/system/build.prop
+

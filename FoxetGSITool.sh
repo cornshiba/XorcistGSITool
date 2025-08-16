@@ -40,7 +40,7 @@ if [ ! -d "$INPUT_DIR" ]; then
   exit 1
 fi
 
-rm -rf "$BASE_DIR"
+rm -rf "Temp"
 mkdir -p "$BASE_DIR"
 echo "Copying to temp directory"
 cp -r "$INPUT_DIR/". "$BASE_DIR/"
@@ -57,7 +57,7 @@ case "$SDK_VERSION" in
     android_version="15"
     ;;
   *)
-    echo "Error: Unsupported SDK version $SDK_VERSION"
+    echo "Error: Unsupported SDK version: $SDK_VERSION"
     exit 1
     ;;
 esac

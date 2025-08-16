@@ -62,8 +62,10 @@ if [ -f "$system_ext/lib64/libbluetooth_qti.so" ]; then
     echo "ro.bluetooth.library_name=libbluetooth_qti.so" >> "$system_ext/etc/build.prop"
 fi
 
-rm -rf $BASE_DIR/system/priv-app/DiracAudioControlService
 rm -rf $BASE_DIR/system/app/DiracManager
+rm -rf $BASE_DIR/system/priv-app/DiracAudioControlService
+
+rm -rf $BASE_DIR/system/app/SecureElement
 
 $SCRIPT_DIR/../../Tools/sepolicy/sepolicy_prop_remover.sh $BASE_DIR/system/etc/selinux/plat_property_contexts "device/qcom/sepolicy" > $TEMP_DIR/plat_property_contexts
 mv $TEMP_DIR/plat_property_contexts $BASE_DIR/system/etc/selinux/plat_property_contexts
@@ -110,11 +112,6 @@ rm -rf $BASE_DIR/system/etc/init/otapreopt.rc
 
 rm -rf $BASE_DIR/system/merge_config_*
 rm -rf $system_ext/apex/com.android.vndk.v*
-
-find "$BASE_DIR" -type d \( -name "app" -o -name "priv-app" \) | while read -r dir; do
-    find "$dir" -type d -name "oat" -exec rm -rf {} + 2>/dev/null
-    find "$dir" -type f -name "*.prof" -exec rm -f {} + 2>/dev/null
-done
 
 find "$BASE_DIR" -type f -name "fstab.*" -exec rm -f {} + 2>/dev/null
 find "$BASE_DIR" -type f -name "verity_key" -exec rm -f {} + 2>/dev/null
