@@ -5,8 +5,8 @@ Telegram channel: https://t.me/XorcistGSIS
 
 ### Download tools
 ```
-git clone https://github.com/FoxetGSI/FoxetGSITool.git
-cd FoxetGSITool
+git clone https://github.com/XorcistGSI/XorcistGSITool.git
+cd XorcistGSITool
 ```
 
 ### For setting up requirements
