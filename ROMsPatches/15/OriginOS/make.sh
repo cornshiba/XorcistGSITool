@@ -89,7 +89,7 @@ rm -rf $system/custom/priv-app/Email
 # Switch to patched init
 rsync -ra $SCRIPT_DIR/bin/ $BASE_DIR/system/bin/
 
-# Siwtch to patched libfsmgr
+# Switch to patched libfsmgr
 rsync -ra $SCRIPT_DIR/lib64/ $BASE_DIR/system/lib64/
 
 # Apply build.prop stuff
